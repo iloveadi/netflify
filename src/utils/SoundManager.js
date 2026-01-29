@@ -97,6 +97,33 @@ class SoundManager {
             setTimeout(() => this.playTone(note, 'square', 0.2), i * 150);
         });
     }
+
+    // Galaga Sounds
+    playShoot() {
+        this.init();
+        if (!this.ctx) return;
+
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(880, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(110, this.ctx.currentTime + 0.15);
+
+        gain.gain.setValueAtTime(0.1, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.15);
+
+        osc.connect(gain);
+        gain.connect(this.masterGain);
+
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.15);
+    }
+
+    playExplosion() {
+        this.init();
+        this.playNoise(0.3);
+    }
 }
 
 const soundManager = new SoundManager();

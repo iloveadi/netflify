@@ -4,6 +4,7 @@ import OmokGame from './games/omok/OmokGame';
 import TetrisGame from './games/tetris/TetrisGame';
 import SnakeGame from './games/snake/SnakeGame';
 import BreakoutGame from './games/breakout/BreakoutGame';
+import GalagaGame from './games/galaga/GalagaGame';
 import './index.css';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/tetris" element={<TetrisGame />} />
           <Route path="/snake" element={<SnakeGame />} />
           <Route path="/breakout" element={<BreakoutGame />} />
+          <Route path="/galaga" element={<GalagaGame />} />
         </Routes>
       </div>
     </Router>

@@ -1,0 +1,79 @@
+.galaga-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #050510;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+}
+
+.galaga-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+.galaga-header h1 {
+    font-size: 2.5rem;
+    color: #FF0055;
+    text-shadow: 0 0 10px #FF0055, 0 0 20px #FF0055;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    letter-spacing: 4px;
+}
+
+.game-canvas {
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%);
+    border: 2px solid #333;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.2);
+    cursor: none;
+}
+
+/* Starfield Animation Background can be added here if not in canvas */
+
+/* Overlays re-using previous styles but with distinct colors */
+.overlay h2 {
+    color: #FF0055;
+    text-shadow: 0 0 20px #FF0055;
+}
+
+.neon-btn.galaga {
+    color: #FF0055;
+    border-color: #FF0055;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
+}
+
+.neon-btn.galaga:hover {
+    background: #FF0055;
+    color: #fff;
+    box-shadow: 0 0 20px #FF0055;
+}
+
+.score-board.galaga {
+    color: #fff;
+    background: rgba(255, 0, 85, 0.1);
+    border: 1px solid #FF0055;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+}
+
+.lives-display {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    color: #fff;
+    font-size: 1.2rem;
+    display: flex;
+    gap: 0.5rem;
+}

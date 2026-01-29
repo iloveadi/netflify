@@ -12,7 +12,7 @@ const games = [
     { id: 5, title: '벽돌깨기', thumbnail: '/breakout_thumbnail_neon.png', color: '#00f2ff' },
     { id: 6, title: '2048', thumbnail: '', color: '#D4A5A5' },
     { id: 7, title: '카드 뒤집기', thumbnail: '', color: '#9B59B6' },
-    { id: 8, title: '갤러그', thumbnail: '', color: '#3498DB' },
+    { id: 8, title: '갤러그', thumbnail: '/galaga_thumbnail_neon.png', color: '#FF0055' },
 ];
 
 const GameGrid = () => {

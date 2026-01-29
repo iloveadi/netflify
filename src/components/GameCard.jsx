@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import './GameCard.css';
 
 const GameCard = ({ game }) => {
-    // 오목(1), 테트리스(3)
-    const isLink = game.id === 1 || game.id === 3 || game.id === 4 || game.id === 5;
+    // 오목(1), 테트리스(3), 스네이크(4), 벽돌깨기(5), 갤러그(8)
+    const isLink = game.id === 1 || game.id === 3 || game.id === 4 || game.id === 5 || game.id === 8;
     let linkPath = '#';
     if (game.id === 1) linkPath = '/omok';
     if (game.id === 3) linkPath = '/tetris';
     if (game.id === 4) linkPath = '/snake';
     if (game.id === 5) linkPath = '/breakout';
+    if (game.id === 8) linkPath = '/galaga';
 
     const CardContent = () => (
         <>
