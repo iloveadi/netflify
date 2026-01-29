@@ -1,0 +1,162 @@
+.breakout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #0d0d0d;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.breakout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 1rem;
+    position: relative;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.breakout-header h1 {
+    font-size: 2.5rem;
+    color: #00f2ff;
+    text-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.canvas-wrapper {
+    position: relative;
+    border: 2px solid #333;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+}
+
+.game-canvas {
+    background: #111;
+    display: block;
+    cursor: none;
+    /* Hide cursor inside canvas */
+}
+
+.controls-hint {
+    margin-top: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Overlays */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 20;
+}
+
+.overlay h2 {
+    font-size: 3rem;
+    color: #00f2ff;
+    text-shadow: 0 0 20px #00f2ff;
+    margin-bottom: 1rem;
+}
+
+.game-over h2 {
+    color: #FF6B6B;
+    text-shadow: 0 0 20px #FF6B6B;
+}
+
+.game-won h2 {
+    color: #4D96FF;
+    text-shadow: 0 0 20px #4D96FF;
+}
+
+.final-score {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.neon-btn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: transparent;
+    color: #00f2ff;
+    border: 2px solid #00f2ff;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+}
+
+.neon-btn:hover {
+    background: #00f2ff;
+    color: #000;
+    box-shadow: 0 0 20px #00f2ff;
+    transform: scale(1.05);
+}
+
+.game-over .neon-btn {
+    color: #FF6B6B;
+    border-color: #FF6B6B;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.2);
+}
+
+.game-over .neon-btn:hover {
+    background: #FF6B6B;
+    color: #000;
+    box-shadow: 0 0 20px #FF6B6B;
+}
+
+/* Reusing common styles */
+.back-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    text-decoration: none;
+    z-index: 10;
+}
+
+.back-btn:hover {
+    background: rgba(0, 242, 255, 0.2);
+    border-color: #00f2ff;
+    transform: translateX(-3px);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+
+.score-board {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: rgba(0, 242, 255, 0.1);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    border: 1px solid #00f2ff;
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+    z-index: 10;
+}

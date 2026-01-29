@@ -4,11 +4,12 @@ import './GameCard.css';
 
 const GameCard = ({ game }) => {
     // 오목(1), 테트리스(3)
-    const isLink = game.id === 1 || game.id === 3 || game.id === 4;
+    const isLink = game.id === 1 || game.id === 3 || game.id === 4 || game.id === 5;
     let linkPath = '#';
     if (game.id === 1) linkPath = '/omok';
     if (game.id === 3) linkPath = '/tetris';
     if (game.id === 4) linkPath = '/snake';
+    if (game.id === 5) linkPath = '/breakout';
 
     const CardContent = () => (
         <>
