@@ -18,11 +18,8 @@ const GameCard = ({ game }) => {
                     backgroundImage: game.thumbnail ? `url(${game.thumbnail})` : 'none'
                 }}
             >
+                <div className="game-title-badge">{game.title}</div>
                 {!game.thumbnail && <span className="placeholder-icon">{game.title[0]}</span>}
-            </div>
-            <div className="info">
-                <h3>{game.title}</h3>
-                <button className="play-btn">PLAY</button>
             </div>
         </>
     );
