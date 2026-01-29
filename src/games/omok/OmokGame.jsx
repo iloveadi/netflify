@@ -13,7 +13,7 @@ const OmokGame = () => {
     const [winner, setWinner] = useState(null);
     const [winningLine, setWinningLine] = useState([]);
     const [lastMove, setLastMove] = useState(null); // {r, c}
-    const [useAI, setUseAI] = useState(true); // Default to AI mode
+    const [useAI, setUseAI] = useState(true); // Always AI mode
     const [isProcessing, setIsProcessing] = useState(false);
 
     const checkWin = useCallback((boardState, r, c, player) => {
@@ -149,9 +149,6 @@ const OmokGame = () => {
 
             <div className="controls">
                 <button onClick={resetGame} className="reset-btn">Reset Game</button>
-                <button className="reset-btn" onClick={() => { resetGame(); setUseAI(!useAI); }}>
-                    Mode: {useAI ? 'vs AI' : 'vs Human'}
-                </button>
             </div>
 
             {winner && (
