@@ -19,28 +19,38 @@
 }
 
 .back-btn {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    text-decoration: none;
 }
 
 .back-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #fff;
+    background: rgba(176, 38, 255, 0.2);
+    border-color: var(--accent-color);
+    transform: translateX(-3px);
+    box-shadow: 0 0 10px rgba(176, 38, 255, 0.3);
 }
 
 .turn-indicator {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     padding: 0.5rem 1.5rem;
     border-radius: 20px;
     background: rgba(30, 30, 30, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    min-width: 150px;
+    text-align: center;
 }
 
 .turn-indicator.black {
@@ -109,19 +119,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Debugging area */
-    /* background: rgba(255,0,0,0.1); */
+}
+
+/* Hover Stone (The Ghost) */
+.hover-stone {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    opacity: 0;
+    /* Hidden by default */
+    transition: opacity 0.2s;
+    pointer-events: none;
+    /* Let clicks pass through if needed */
 }
 
 .cell-intersection:hover .hover-stone {
-    opacity: 0.5;
+    opacity: 0.6;
+    /* Show only on hover */
 }
 
+.hover-stone.black {
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.hover-stone.white {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Placed Stones */
 .stone {
     width: 90%;
     height: 90%;
     border-radius: 50%;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 5;
 }
 
 .stone.black {
@@ -132,20 +165,6 @@
 .stone.white {
     background: radial-gradient(circle at 30% 30%, #fff, #ddd);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.4);
-}
-
-.hover-stone {
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-}
-
-.hover-stone.black {
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.hover-stone.white {
-    background: rgba(255, 255, 255, 0.3);
 }
 
 .last-move-marker {
@@ -159,6 +178,7 @@
     transform: translate(-50%, -50%);
     opacity: 0.8;
     box-shadow: 0 0 5px red;
+    z-index: 6;
 }
 
 .winner-modal {
@@ -184,6 +204,11 @@
     text-shadow: 0 0 20px var(--accent-color);
 }
 
+.controls {
+    display: flex;
+    gap: 1rem;
+}
+
 .reset-btn {
     padding: 1rem 2rem;
     font-size: 1.2rem;
@@ -194,7 +219,6 @@
     cursor: pointer;
     font-weight: bold;
     transition: transform 0.2s, box-shadow 0.2s;
-    margin: 0 0.5rem;
 }
 
 .reset-btn:hover {
