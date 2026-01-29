@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import soundManager from '../../utils/SoundManager';
 import './Breakout.css';
 
 const BreakoutGame = () => {
@@ -59,7 +60,10 @@ const BreakoutGame = () => {
             if (e.key === 'ArrowRight' || e.key === 'd') gameState.current.rightPressed = true;
             if (e.key === 'ArrowLeft' || e.key === 'a') gameState.current.leftPressed = true;
             if (e.key === ' ') {
-                if (!gameStarted) setGameStarted(true);
+                if (!gameStarted) {
+                    setGameStarted(true);
+                    soundManager.init(); // Initialize audio context on interact
+                }
             }
         };
 
@@ -129,10 +133,12 @@ const BreakoutGame = () => {
         };
 
         const collisionDetection = () => {
+            let activeBricks = 0;
             for (let c = 0; c < BRICK_COLUMN_COUNT; c++) {
                 for (let r = 0; r < BRICK_ROW_COUNT; r++) {
                     const b = state.bricks[c][r];
                     if (b.status === 1) {
+                        activeBricks++;
                         if (
                             state.ball.x > b.x &&
                             state.ball.x < b.x + BRICK_WIDTH &&
@@ -142,12 +148,17 @@ const BreakoutGame = () => {
                             state.ball.dy = -state.ball.dy;
                             b.status = 0;
                             setScore(prev => prev + 10);
-
-                            // Check Win
-                            // (Optimized: check count logic could be here, but simpler to check score or remaining bricks)
+                            soundManager.playBrickHit();
+                            activeBricks--;
                         }
                     }
                 }
+            }
+
+            if (activeBricks === 0) {
+                setGameWon(true);
+                soundManager.playWin();
+                setGameStarted(false);
             }
         };
 
@@ -165,11 +176,13 @@ const BreakoutGame = () => {
             // Wall Collision (Left/Right)
             if (state.ball.x + state.ball.dx > canvas.width - BALL_RADIUS || state.ball.x + state.ball.dx < BALL_RADIUS) {
                 state.ball.dx = -state.ball.dx;
+                soundManager.playWallHit();
             }
 
             // Wall Collision (Top)
             if (state.ball.y + state.ball.dy < BALL_RADIUS) {
                 state.ball.dy = -state.ball.dy;
+                soundManager.playWallHit();
             } else if (state.ball.y + state.ball.dy > canvas.height - BALL_RADIUS - 10) { // Bottom (near paddle)
                 // Paddle Collision
                 if (state.ball.x > state.paddle.x && state.ball.x < state.paddle.x + PADDLE_WIDTH) {
@@ -183,10 +196,12 @@ const BreakoutGame = () => {
                     state.ball.dy = -Math.abs(state.ball.dy); // Always bounce up
                     // Speed up slightly
                     // state.ball.dy *= 1.05; 
+                    soundManager.playPaddleHit();
                 } else if (state.ball.y + state.ball.dy > canvas.height - BALL_RADIUS) {
                     // Game Over (Floor)
                     setGameOver(true);
                     setGameStarted(false);
+                    soundManager.playGameOver();
                     return;
                 }
             }
@@ -221,6 +236,7 @@ const BreakoutGame = () => {
         setGameOver(false);
         setGameWon(false);
         setGameStarted(true);
+        soundManager.init();
     };
 
     return (
@@ -242,7 +258,7 @@ const BreakoutGame = () => {
                 {!gameStarted && !gameOver && !gameWon && (
                     <div className="overlay start-overlay">
                         <h2>Ready?</h2>
-                        <button onClick={() => setGameStarted(true)} className="neon-btn">PRESS SPACE TO START</button>
+                        <button onClick={() => { setGameStarted(true); soundManager.init(); }} className="neon-btn">PRESS SPACE TO START</button>
                     </div>
                 )}
 
