@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import './OmokGame.css';
-import { getBestMove } from './omokAI';
+import { getBestMove } from './OmokAI';
 
 const BOARD_SIZE = 15;
 
