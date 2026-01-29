@@ -1,0 +1,142 @@
+.snake-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #0d0d0d;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.snake-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.snake-header h1 {
+    font-size: 2.5rem;
+    color: #2ECC71;
+    text-shadow: 0 0 10px #2ECC71, 0 0 20px #2ECC71;
+    margin: 0;
+}
+
+.score-board {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    background: rgba(46, 204, 113, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #2ECC71;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+.game-area {
+    position: relative;
+    padding: 10px;
+    background: #111;
+    border: 2px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 10px rgba(46, 204, 113, 0.2);
+}
+
+.snake-grid {
+    display: grid;
+    grid-template-columns: repeat(20, 20px);
+    grid-template-rows: repeat(20, 20px);
+    gap: 1px;
+    background-color: #000;
+}
+
+.grid-cell {
+    width: 20px;
+    height: 20px;
+    background-color: #1a1a1a;
+}
+
+/* Snake Styles */
+.snake-head {
+    background-color: #2ECC71;
+    box-shadow: 0 0 10px #2ECC71, 0 0 20px #2ECC71;
+    z-index: 2;
+    border-radius: 2px;
+}
+
+.snake-body {
+    background-color: rgba(46, 204, 113, 0.7);
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+    border-radius: 2px;
+}
+
+/* Food Styles */
+.food {
+    background-color: #FF6B6B;
+    box-shadow: 0 0 10px #FF6B6B, 0 0 20px #FF6B6B;
+    border-radius: 50%;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(0.8);
+        box-shadow: 0 0 5px #FF6B6B;
+    }
+
+    to {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px #FF6B6B;
+    }
+}
+
+/* Game Over Overlay */
+.game-over-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+}
+
+.game-over-overlay h2 {
+    font-size: 3rem;
+    color: #FF6B6B;
+    text-shadow: 0 0 20px #FF6B6B;
+    margin-bottom: 1rem;
+}
+
+.restart-btn {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: #2ECC71;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.restart-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #2ECC71;
+}
+
+.mobile-controls {
+    margin-top: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+}

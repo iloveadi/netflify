@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GameGrid from './components/GameGrid';
 import OmokGame from './games/omok/OmokGame';
 import TetrisGame from './games/tetris/TetrisGame';
+import SnakeGame from './games/snake/SnakeGame';
 import './index.css';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           } />
           <Route path="/omok" element={<OmokGame />} />
           <Route path="/tetris" element={<TetrisGame />} />
+          <Route path="/snake" element={<SnakeGame />} />
         </Routes>
       </div>
     </Router>
